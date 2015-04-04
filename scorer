@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require_relative 'lib/scorer.rb'
+require_relative 'lib/notification_system.rb'
+
+Scorer.new.run
