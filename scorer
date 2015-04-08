@@ -2,5 +2,37 @@
 
 require_relative 'lib/scorer.rb'
 require_relative 'lib/notification_system.rb'
+require 'optparse'
 
-Scorer.new.run
+flags = {}
+
+opt_parser = OptionParser.new do |opt|
+  opt.banner = "Usage: scorer [flags]"
+  opt.separator  ""
+  opt.separator  "flags"
+
+  opt.on("-d", "--daemon", "tell the process to run as a daemon") do
+    flags[:purpose] = 'daemon'
+  end
+
+  opt.on("-k", "--kill", "kill the daemon process if its running") do
+    flags[:purpose] = 'kill'
+  end
+
+  opt.on("-h","--help","help") do
+    flags[:purpose] = 'help'
+    puts opt_parser
+  end
+end
+opt_parser.parse!
+
+purpose = flags[:purpose] || 'run'
+
+case purpose
+  when 'daemon'
+    Scorer.new.daemon
+  when 'kill'
+    Scorer.kill
+  when 'run'
+    Scorer.new.run
+end
