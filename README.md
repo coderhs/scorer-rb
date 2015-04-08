@@ -14,7 +14,7 @@ $ ./scorer
 
 ## To do
 
-* run as a demon process
-* accept command line arguments to make the process a daemon or show the score at instant
-* write test for the program
-* make the program installable as a ruby gem
+* Show all the matches at present
+* Show scores of matches based on team name or key
+* Write test for the program
+* Make the program installable as a ruby gem
