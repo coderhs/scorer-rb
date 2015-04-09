@@ -28,11 +28,13 @@ opt_parser.parse!
 
 purpose = flags[:purpose] || 'run'
 
+@scorer = Scorer.new(NotificationSystem.new)
+
 case purpose
   when 'daemon'
-    Scorer.new.daemon
+    @scorer.daemon
   when 'kill'
-    Scorer.kill
+    @scorer.kill
   when 'run'
-    Scorer.new.run
+    @scorer.run
 end

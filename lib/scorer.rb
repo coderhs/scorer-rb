@@ -2,9 +2,9 @@ require 'open-uri'
 require 'nokogiri'
 
 class Scorer
-  def initialize url = 'http://static.cricinfo.com/rss/livescores.xml'
+  def initialize notification_system, url = 'http://static.cricinfo.com/rss/livescores.xml'
     @url = url
-    @notification = NotificationSystem.new
+    @notification = notification_system
   end
 
   def run
@@ -15,7 +15,7 @@ class Scorer
   end
 
   # Kill the scorer backgroung program
-  def self.kill
+  def kill
     # We use the ps -fu $user command to ensure that only the scorer program run
     # by this user is found
     pid = get_pid
