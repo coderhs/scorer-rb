@@ -19,7 +19,7 @@ opt_parser = OptionParser.new do |opt|
     flags[:purpose] = 'kill'
   end
 
-  opt.on("-h","--help","help") do
+  opt.on("-h", "--help", "help") do
     flags[:purpose] = 'help'
     puts opt_parser
   end
