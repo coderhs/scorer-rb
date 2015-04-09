@@ -2,9 +2,10 @@ require 'open-uri'
 require 'nokogiri'
 
 class Scorer
-  def initialize notification_system, url = 'http://static.cricinfo.com/rss/livescores.xml'
+  def initialize notification_system, file, url = 'http://static.cricinfo.com/rss/livescores.xml'
     @url = url
     @notification = notification_system
+    @file = file
   end
 
   def run
@@ -45,7 +46,7 @@ class Scorer
 
   private
 
-  def self.get_pid
-    `/bin/ps -fu $USER| grep "test" | grep -v "grep" | awk '{print $2}'`.strip.to_i
+  def get_pid
+    `/bin/ps -fu $USER| grep "#{@file} -d" | grep -v "grep" | awk '{print $2}'`.strip.to_i
   end
 end
