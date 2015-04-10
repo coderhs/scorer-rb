@@ -11,6 +11,16 @@ $ bundle
 $ ./scorer
 ```
 
+## Usage
+
+```sh
+Usage: scorer [flags]
+
+flags
+    -d, --daemon                     tell the process to run as a daemon
+    -k, --kill                       kill the daemon process if its running
+    -h, --help                       help
+```
 
 ## To do
 
