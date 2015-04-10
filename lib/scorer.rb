@@ -25,7 +25,7 @@ class Scorer
     else
       puts "Process not running"
     end
-    sleep(0.5)
+    sleep(1)
 
     unless get_pid.eql?(0)
       puts "Process still running unable to kill for some reason"
