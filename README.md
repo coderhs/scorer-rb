@@ -13,7 +13,7 @@ $ ./scorer
 
 ## Usage
 
-```sh
+```
 Usage: scorer [flags]
 
 flags
