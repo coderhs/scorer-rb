@@ -11,7 +11,7 @@ class Scorer
   def run
     open(@url) do |f|
       score = Nokogiri::XML(f).xpath("//item//description").text
-      @notification.send_message(score)
+      @notification.send_message(score, 'Scorer')
     end
   end
 

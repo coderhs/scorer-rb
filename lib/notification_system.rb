@@ -7,11 +7,11 @@ class NotificationSystem
     raise 'OS type not supported by system' unless OS.mac? or OS.linux?
   end
 
-  def send_message msg
+  def send_message msg, title
     if defined?(TerminalNotifier)
-      TerminalNotifier.notify(msg, :title => 'Scorer')
+      TerminalNotifier.notify(msg, :title => title)
     elsif defined?(Libnotify)
-      Libnotify.show(:body => msg, :summary => 'Scorer')
+      Libnotify.show(:body => msg, :summary => title)
     end
   end
 end
