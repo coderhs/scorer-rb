@@ -26,7 +26,13 @@ opt_parser = OptionParser.new do |opt|
     puts opt_parser
   end
 end
-opt_parser.parse!
+
+begin
+  opt_parser.parse!
+rescue OptionParser::ParseError
+  puts opt_parser
+  exit(0)
+end
 
 purpose = flags[:purpose] || 'run'
 
