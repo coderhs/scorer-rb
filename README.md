@@ -14,7 +14,9 @@ $ ./scorer
 ## Usage
 
 ```
-Usage: scorer [flags]
+Usage:
+./scorer
+./scorer [flags]
 
 flags
     -d, --daemon                     tell the process to run as a daemon
