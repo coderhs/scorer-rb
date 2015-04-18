@@ -15,6 +15,15 @@ class Scorer
     end
   end
 
+  def list
+    open(@url) do |f|
+      score = Nokogiri::XML(f).xpath("//item//description")
+      score.each_with_index do |t, i|
+        puts "#{i}. #{t.text}"
+      end
+    end
+  end
+
   # Kill the scorer backgroung program
   def kill
     # We use the ps -fu $user command to ensure that only the scorer program run

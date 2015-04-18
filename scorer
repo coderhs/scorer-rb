@@ -21,6 +21,10 @@ opt_parser = OptionParser.new do |opt|
     flags[:purpose] = 'kill'
   end
 
+  opt.on('-l', '--list', 'list all the present matches') do
+    flags[:purpose] = 'list'
+  end
+
   opt.on("-h", "--help", "help") do
     flags[:purpose] = 'help'
     puts opt_parser
@@ -46,4 +50,6 @@ case purpose
     scorer.kill
   when 'run'
     scorer.run
+  when 'list'
+    scorer.list
 end
