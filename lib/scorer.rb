@@ -8,9 +8,15 @@ class Scorer
     @file = file
   end
 
-  def run
+  # Game index refers to the position of the game one recieves
+  # when they run ./scorer -l
+  def run game_index = nil
     open(@url) do |f|
-      score = Nokogiri::XML(f).xpath("//item//description").text
+      score = unless game_index
+        Nokogiri::XML(f).xpath("//item//description").last.text
+      else
+        Nokogiri::XML(f).xpath("//item//description")[game_index].text
+      end
       @notification.send_message(score, 'Scorer')
     end
   end
@@ -41,11 +47,11 @@ class Scorer
     end
   end
 
-  def daemon
+  def daemon game_index
     Process.daemon(true)
     loop do
       pid = Process.fork do
-        run
+        run game_index
       end
       Process.waitpid(pid)
       # Reduce CPU usage so the loop runs only every 30 seconds
