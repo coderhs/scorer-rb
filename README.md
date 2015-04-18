@@ -13,6 +13,8 @@ $ ./scorer
 
 ## Usage
 
+### Basic
+
 ```
 Usage:
 ./scorer
@@ -24,9 +26,35 @@ flags
     -h, --help                       help
 ```
 
+### Display all the matches for which score is available
+
+Command
+
+```sh
+./scorer -l
+```
+
+Result
+``[Game Index]. [Match]``
+
+```sh
+0. Australia Under-19s 242/7 * v England Under-19s 241/7 
+1. Sunrisers Hyderabad 163/8 * v Delhi Daredevils 167/4 
+2. Kings XI Punjab 123/5 * v Kolkata Knight Riders
+
+```
+
+### Show score of particular game
+
+Get the game index using command `./scorer -l`.
+
+Command
+
+```sh
+./scorer 0
+```
+
 ## To do
 
-* Show all the matches at present
-* Show scores of matches based on team name or key
 * Write test for the program
 * Make the program installable as a ruby gem

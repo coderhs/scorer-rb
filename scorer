@@ -9,7 +9,7 @@ game_index = nil
 
 opt_parser = OptionParser.new do |opt|
   opt.banner = "Usage:\n./scorer"
-  opt.banner += "\n./scorer [flags]"
+  opt.banner += "\n./scorer [flags] [value]"
 
   opt.separator  ""
   opt.separator  "flags"
