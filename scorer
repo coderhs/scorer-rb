@@ -5,7 +5,7 @@ require_relative 'lib/notification_system.rb'
 require 'optparse'
 
 flags = {}
-game_index = nil
+game_index = Integer(ARGV.first) rescue nil unless game_index
 
 opt_parser = OptionParser.new do |opt|
   opt.banner = "Usage:\n./scorer"
@@ -34,7 +34,7 @@ opt_parser = OptionParser.new do |opt|
 end
 
 begin
-  opt_parser.parse!
+  opt_parser.parse! unless game_index
 rescue OptionParser::ParseError
   puts opt_parser
   exit(0)
@@ -51,7 +51,6 @@ case purpose
   when 'kill'
     scorer.kill
   when 'run'
-    game_index = Integer(ARGV.first) rescue nil unless game_index
     scorer.run game_index
   when 'list'
     scorer.list
