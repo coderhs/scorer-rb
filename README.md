@@ -54,6 +54,17 @@ Command
 ./scorer 0
 ```
 
+### Show score of particular game as daemon
+
+Get the game index using command `./scorer --daemon=[game_index]`.
+
+Command
+
+```sh
+./scorer --daemon=2
+```
+
+
 ## To do
 
 * Write test for the program

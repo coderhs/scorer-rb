@@ -14,7 +14,7 @@ opt_parser = OptionParser.new do |opt|
   opt.separator  ""
   opt.separator  "flags"
 
-  opt.on("-d", "--daemon", "tell the process to run as a daemon") do |v|
+  opt.on("-d", "--daemon=val", "tell the process to run as a daemon", Integer) do |v|
     flags[:purpose] = 'daemon'
     game_index = v
   end
