@@ -18,11 +18,13 @@ $ ./scorer
 ```
 Usage:
 ./scorer
+./scorer [Game Index]
 ./scorer [flags]
 
 flags
-    -d, --daemon                     tell the process to run as a daemon
+    -d, --daemon=val                 tell the process to run as a daemon
     -k, --kill                       kill the daemon process if its running
+    -l, --list                       list all the present matches
     -h, --help                       help
 ```
 

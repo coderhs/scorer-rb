@@ -9,7 +9,8 @@ game_index = Integer(ARGV.first) rescue nil unless game_index
 
 opt_parser = OptionParser.new do |opt|
   opt.banner = "Usage:\n./scorer"
-  opt.banner += "\n./scorer [flags] [value]"
+  opt.banner += "\n./scorer [Game Index]"
+  opt.banner += "\n./scorer [flags]"
 
   opt.separator  ""
   opt.separator  "flags"
