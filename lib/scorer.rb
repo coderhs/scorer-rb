@@ -2,7 +2,7 @@ require 'open-uri'
 require 'nokogiri'
 
 class Scorer
-  def initialize notification_system, file, url = 'http://static.cricinfo.com/rss/livescores.xml'
+  def initialize(notification_system, file, url = 'http://static.cricinfo.com/rss/livescores.xml')
     @url = url
     @notification = notification_system
     @file = file
@@ -10,12 +10,12 @@ class Scorer
 
   # Game index refers to the position of the game one recieves
   # when they run ./scorer -l
-  def run game_index = nil
+  def run(game_index = nil)
     open(@url) do |f|
-      score = unless game_index
-        Nokogiri::XML(f).xpath("//item//description").last.text
+      score = if game_index
+        Nokogiri::XML(f).xpath('//item//description')[game_index].text
       else
-        Nokogiri::XML(f).xpath("//item//description")[game_index].text
+        Nokogiri::XML(f).xpath('//item//description').last.text
       end
       @notification.send_message(score, 'Scorer')
     end
@@ -23,7 +23,7 @@ class Scorer
 
   def list
     open(@url) do |f|
-      score = Nokogiri::XML(f).xpath("//item//description")
+      score = Nokogiri::XML(f).xpath('//item//description')
       score.each_with_index do |t, i|
         puts "#{i}. #{t.text}"
       end
@@ -38,16 +38,16 @@ class Scorer
     unless get_pid.eql?(0)
       Process.kill('QUIT', pid)
     else
-      puts "Process not running"
+      puts 'Process not running'
     end
     sleep(1)
 
     unless get_pid.eql?(0)
-      puts "Process still running unable to kill for some reason"
+      puts 'Process still running unable to kill for some reason'
     end
   end
 
-  def daemon game_index
+  def daemon(game_index)
     Process.daemon(true)
     loop do
       pid = Process.fork do
