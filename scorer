@@ -6,6 +6,7 @@ require 'optparse'
 
 flags = {}
 game_index = Integer(ARGV.first) rescue nil unless game_index
+refresh_time = 30
 
 opt_parser = OptionParser.new do |opt|
   opt.banner = "Usage:\n./scorer"
@@ -18,6 +19,10 @@ opt_parser = OptionParser.new do |opt|
   opt.on("-d", "--daemon=val", "tell the process to run as a daemon", Integer) do |v|
     flags[:purpose] = 'daemon'
     game_index = v
+  end
+
+  opt.on("-s", "--seconds=val", "tell the process to run as a daemon", Integer) do |v|
+   refresh_time = v
   end
 
   opt.on("-k", "--kill", "kill the daemon process if its running") do
@@ -48,7 +53,7 @@ scorer = Scorer.new(NotificationSystem.new, $0)
 
 case purpose
   when 'daemon'
-    scorer.daemon game_index
+    scorer.daemon(game_index, refresh_time)
   when 'kill'
     scorer.kill
   when 'run'
