@@ -47,7 +47,7 @@ class Scorer
     end
   end
 
-  def daemon(game_index)
+  def daemon(game_index, refresh_time)
     Process.daemon(true)
     loop do
       pid = Process.fork do
@@ -55,7 +55,7 @@ class Scorer
       end
       Process.waitpid(pid)
       # Reduce CPU usage so the loop runs only every 30 seconds
-      sleep(30)
+      sleep(refresh_time)
     end
   end
 
