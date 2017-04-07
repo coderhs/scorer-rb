@@ -21,7 +21,7 @@ opt_parser = OptionParser.new do |opt|
     game_index = v
   end
 
-  opt.on("-s", "--seconds=val", "tell the process to run as a daemon", Integer) do |v|
+  opt.on("-s", "--seconds=val", "show the score after -s seconds", Integer) do |v|
    refresh_time = v
   end
 
