@@ -23,6 +23,7 @@ Usage:
 
 flags
     -d, --daemon=val                 tell the process to run as a daemon
+    -s, --seconds=val                set score refresh time, applicable only if process running as a daemon
     -k, --kill                       kill the daemon process if its running
     -l, --list                       list all the present matches
     -h, --help                       help
@@ -66,6 +67,13 @@ Command
 ./scorer --daemon=2
 ```
 
+If you want to set refresh time you can also do it like this
+
+```sh
+./scorer --daemon=2 --seconds=40
+```
+
+By default refresh time is 30  seconds.
 
 ## To do
 
